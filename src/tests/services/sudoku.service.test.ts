@@ -1,11 +1,11 @@
-import { getBoard, solveBoard, validateBoard } from 'services/sudoku.service';
+import { getBoard, solveBoard, validateBoard, BoardResponse, SolveResponse, ValidateResponse } from 'services/sudoku.service';
 
-let board1: any;
-let board2: any;
-let solved1: any;
-let solved2: any;
-let validated1: any;
-let validated2: any;
+let board1: BoardResponse;
+let board2: BoardResponse;
+let solved1: SolveResponse;
+let solved2: SolveResponse;
+let validated1: ValidateResponse;
+let validated2: ValidateResponse;
 
 beforeAll(async () => {
   board1 = await getBoard('easy');

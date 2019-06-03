@@ -3,8 +3,26 @@ import qs from 'qs';
 
 const baseURI: string = 'https://sugoku.herokuapp.com';
 
-type Difficulty = 'easy' | 'medium' | 'hard' | 'random';
-type Board = Array<Array<number>>;
+type Tuple9<T> = [T, T, T, T, T, T, T, T, T];
+
+export type Board = Tuple9<Tuple9<number>>;
+
+export type Difficulty = 'easy' | 'medium' | 'hard' | 'random';
+export type Status = 'solved' | 'unsolved';
+
+export type BoardResponse = {
+  board: Board;
+}
+
+export type SolveResponse = {
+  difficulty: Difficulty;
+  status: Status;
+  solution: Board;
+}
+
+export type ValidateResponse = {
+  status: Status;
+}
 
 const convertBoardToString = (board: Board): string => {
   let elementArray: Array<string> = [];
