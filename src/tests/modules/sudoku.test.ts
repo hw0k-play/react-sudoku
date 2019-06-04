@@ -1,4 +1,4 @@
-import { sudokuReducer, START, END, GET_BOARD, SET_BOARD, SOLVE_BOARD, UPDATE_BOARD, SetBoardPayload, actionCreators, SudokuActionTypes } from 'modules/sudoku';
+import { sudokuReducer, actionCreators, SudokuActionTypes } from 'modules/sudoku';
 
 describe('Sudoku Redux Module Test', () => {
   describe('actions', () => {
@@ -29,7 +29,6 @@ describe('Sudoku Redux Module Test', () => {
           [7,8,5,9,3,6,2,4,1],
           [9,6,1,7,2,4,5,8,3]
         ]}),
-        actionCreators.solveBoard(),
         actionCreators.updateBoard({x: 0, y: 0, value: 5})
       ];
       expect(actions).toMatchSnapshot();
