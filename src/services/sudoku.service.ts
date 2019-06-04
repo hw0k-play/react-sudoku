@@ -12,17 +12,17 @@ export type Status = 'solved' | 'unsolved';
 
 export type BoardResponse = {
   board: Board;
-}
+};
 
 export type SolveResponse = {
   difficulty: Difficulty;
   status: Status;
   solution: Board;
-}
+};
 
 export type ValidateResponse = {
   status: Status;
-}
+};
 
 const convertBoardToString = (board: Board): string => {
   let elementArray: Array<string> = [];
@@ -31,14 +31,18 @@ const convertBoardToString = (board: Board): string => {
   return `[${elementArray.join(',')}]`;
 };
 
+const handleAPIError = (err: Error) => {
+  console.error('An API Error occured.');
+  console.error(err);
+};
+
 export const getBoard = async (difficulty: Difficulty) => {
   try {
     const { data } = await axios.get(`${baseURI}/board?difficulty=${difficulty}`);
     return data;
   }
   catch (err) {
-    console.error('An API Error occured.');
-    console.error(err);
+    handleAPIError(err);
   }
 };
 
@@ -52,8 +56,7 @@ export const solveBoard = async (board: Board) => {
     return data;
   }
   catch (err) {
-    console.error('An API Error occured.');
-    console.error(err);
+    handleAPIError(err);
   }
 };
 
@@ -67,7 +70,6 @@ export const validateBoard = async (board: Board) => {
     return data;
   }
   catch (err) {
-    console.error('An API Error occured.');
-    console.error(err);
+    handleAPIError(err);
   }
 };
