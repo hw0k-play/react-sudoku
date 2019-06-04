@@ -41,6 +41,8 @@
 
 ## 개발 일지
 
+아래 링크는 Medium Friends Link이므로 읽기 제한에 걸리지 않고 무제한으로 열람하실 수 있습니다 :)
+
 1. [만들기 전](https://medium.com/@hw0knam/%EB%A6%AC%EC%95%A1%ED%8A%B8%EB%A1%9C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EC%8A%A4%EB%8F%84%EC%BF%A0-1-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%A0%84-d580db8d589e?source=friends_link&sk=10a631e4ead07a3c1e08466504721638)
 2. [프로젝트 준비하기](https://medium.com/@hw0knam/%EB%A6%AC%EC%95%A1%ED%8A%B8%EB%A1%9C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EC%8A%A4%EB%8F%84%EC%BF%A0-2-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%A4%80%EB%B9%84%ED%95%98%EA%B8%B0-e22f91bef37b?source=friends_link&sk=4933cd1b1c2af3f61d4a837af9eef9af)
 3. [스도쿠 서비스 만들기](https://medium.com/@hw0knam/%EB%A6%AC%EC%95%A1%ED%8A%B8%EB%A1%9C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EC%8A%A4%EB%8F%84%EC%BF%A0-3-%EC%8A%A4%EB%8F%84%EC%BF%A0-%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%A7%8C%EB%93%A4%EA%B8%B0-cedc558575d5?source=friends_link&sk=eb732d5153d36421886723efc798a3ad)
