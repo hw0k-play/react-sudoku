@@ -1,9 +1,11 @@
 import React from 'react';
 
+import SudokuContainer from './SudokuContainer';
+
 const App: React.FC = () => {
   return (
     <div>
-      Hello
+      <SudokuContainer />
     </div>
   );
 };

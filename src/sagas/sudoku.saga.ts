@@ -5,7 +5,6 @@ import { getBoard, solveBoard } from 'services/sudoku.service';
 export function* fetchSudokuSaga(action: SudokuActionTypes) {
   try {
     const { board } = yield call(getBoard, (action as GetBoardAction).payload);
-    console.log(board);
     const { solution } = yield call(solveBoard, board);
     yield put(actionCreators.setBoard({ board, solution }));
   }

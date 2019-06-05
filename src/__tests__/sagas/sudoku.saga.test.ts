@@ -9,6 +9,7 @@ describe('Sudoku Saga test', () => {
     saga.next().call(getBoard, 'easy');
     saga.next();
     saga.next().isDone();
+    saga.finish();
   });
 
   test('Should throw error', () => {
@@ -16,5 +17,6 @@ describe('Sudoku Saga test', () => {
     saga.next().call(getBoard, 'easy');
     saga.throw(new Error('test'));
     saga.next().isDone();
+    saga.finish();
   });
 });

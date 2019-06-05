@@ -40,12 +40,14 @@
     "redux-logger": "^3.0.6",
     "redux-saga": "^1.0.2",
     "redux-saga-test-plan": "^4.0.0-beta.3",
+    "styled-components": "^4.2.1",
     "typescript": "3.5.1"
   },
   "devDependencies": {
     "@types/qs": "^6.5.3",
     "@types/react-redux": "^7.0.9",
     "@types/redux-logger": "^3.0.7",
+    "@types/styled-components": "^4.1.16",
     "customize-cra": "^0.2.13",
     "react-app-rewired": "^2.1.3"
   }
