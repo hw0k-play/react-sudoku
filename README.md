@@ -50,3 +50,4 @@
 3. [스도쿠 서비스 만들기](https://medium.com/@hw0knam/cedc558575d5?source=friends_link&sk=eb732d5153d36421886723efc798a3ad)
 4. [Redux 스토어 만들기](https://medium.com/@hw0knam/d04a73b5c978?source=friends_link&sk=b681e0869ee0563ed2ab258591f84652)
 5. [스도쿠 서비스를 이용하는 사가 만들기](https://medium.com/@hw0knam/9a117597396e?source=friends_link&sk=88393ae8718b059565073c80ff4fde1c)
+6. [컴포넌트 만들기](https://medium.com/@hw0knam/1fd7a4f46ee7?source=friends_link&sk=22b6df799935e00704791928571c7266)
