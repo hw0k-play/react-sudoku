@@ -33,7 +33,7 @@ const Wrapper = styled.div`
   }
 `;
 
-type CellProps = WrapperProps;
+type CellProps = WrapperProps & { children?: React.ReactNode };
 
 const Cell: React.SFC<CellProps> = props => {
   return (
@@ -43,4 +43,4 @@ const Cell: React.SFC<CellProps> = props => {
   );
 };
 
-export default Cell;
+export default React.memo(Cell);
