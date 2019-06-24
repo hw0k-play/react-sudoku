@@ -7,6 +7,9 @@ import { Difficulty, Board } from 'services/sudoku.service';
 
 import Grid from 'components/base/Grid';
 import Gap from 'components/base/Gap';
+import Stat from 'components/base/Stat';
+import Select from 'components/base/Select';
+import Button from 'components/base/Button';
 
 type SudokuContainerProps = {
   sudoku: SudokuState;
@@ -39,6 +42,24 @@ const Wrapper = styled.div`
   position: relative;
 `;
 
+const StatWrapper = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+`;
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bolder;
+`;
+
+const DifficultyWrapper = styled.div`
+  font-weight: bolder;
+  margin-bottom: 1rem;
+`;
+
 class SudokuContainer extends React.Component<SudokuContainerProps, SudokuContainerState> {
   state = {
     x: 0,
@@ -68,31 +89,34 @@ class SudokuContainer extends React.Component<SudokuContainerProps, SudokuContai
     const { sudoku } = this.props;
     return (
       <Wrapper>
+        <Gap top="4.5rem" />
+        <HeaderWrapper>
+          React Sudoku
+        </HeaderWrapper>
+        <Gap top="1.5rem" />
+        <StatWrapper>
+          <Stat title="남은 셀 갯수" value={`${sudoku.status === 'unsolved' ? getEmptyCellsCount(sudoku.board) : '-'}`} suffix=" / 81" />
+          <Stat title="실수 허용 횟수" value={`${sudoku.status === 'unsolved' ? 3 - sudoku.failCount : '-'}`} suffix=" / 3" />
+        </StatWrapper>
+        <Gap top="1.5rem" />
         <Grid board={sudoku.board} selectedCell={this.state} onClick={this.handleClick} />
         <Gap top="1.5rem" />
-        <div>
-          난이도: 
-          <select disabled={sudoku.status === 'unsolved'} ref={this.difficultyRef}>
-            <option value="easy">쉬움</option>
-            <option value="medium">보통</option>
-            <option value="hard">어려움</option>
-            <option value="random">랜덤</option>
-          </select>
-          <button disabled={sudoku.status === 'unsolved'} onClick={() => this.props.getBoard(this.difficultyRef.current!!.value as Difficulty)}>시작하기</button>
-          <button disabled={sudoku.status === 'solved'} onClick={() => this.props.end()}>포기하기</button>
-        </div>
-        <Gap top="1.5rem" />
-        <div>
-          {
-            sudoku.status === 'unsolved' ? `현재 ${getEmptyCellsCount(sudoku.board)} 개의 셀이 남았습니다.` : `게임 중이 아닙니다.`
-          }
-        </div>
-        <Gap top="1.5rem" />
-        <div>
-          {
-            sudoku.status === 'unsolved' && `실수 허용 횟수: ${3 - sudoku.failCount}`
-          }
-        </div>
+        <StatWrapper>
+          <div>
+            <DifficultyWrapper>난이도</DifficultyWrapper>
+            <Select disabled={sudoku.status === 'unsolved'} ref={this.difficultyRef}>
+              <option value="easy">쉬움</option>
+              <option value="medium">보통</option>
+              <option value="hard">어려움</option>
+              <option value="random">랜덤</option>
+          </Select>
+          </div>
+          <div style={{display: 'flex', flexFlow: 'row nowrap'}}>
+            <Button disabled={sudoku.status === 'unsolved'} onClick={() => this.props.getBoard(this.difficultyRef.current!!.value as Difficulty)}>시작하기</Button>
+            <Gap right="1rem" />
+            <Button disabled={sudoku.status === 'solved'} onClick={() => this.props.end()}>포기하기</Button>
+          </div>
+        </StatWrapper>
       </Wrapper>
     );
   }
