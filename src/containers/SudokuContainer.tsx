@@ -96,7 +96,7 @@ class SudokuContainer extends React.Component<SudokuContainerProps, SudokuContai
         </HeaderWrapper>
         <Gap top="1.5rem" />
         <StatWrapper>
-          <Stat title="남은 셀 갯수" value={`${sudoku.status === 'unsolved' ? getEmptyCellsCount(sudoku.board) : '-'}`} suffix=" / 81" />
+          <Stat title="남은 셀 개수" value={`${sudoku.status === 'unsolved' ? getEmptyCellsCount(sudoku.board) : '-'}`} suffix=" / 81" />
           {
             sudoku.loading && <Loading type="bars" color="#000" />
           }
