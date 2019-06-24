@@ -4,11 +4,19 @@
 
 # 리액트로 만드는 스도쿠
 
+
+
 ## 개요
 
 평소 즐겨하는 스도쿠 게임을 따라 만들어보는 프로젝트입니다.
 
 **Thanks to [berto](https://berto.github.io/)'s [Sudoku API](https://github.com/berto/sugoku)**
+
+
+
+## 미리보기
+
+[https://react-sudoku.hw0k.now.sh](https://react-sudoku.hw0k.now.sh)
 
 
 
