@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import Loading from 'react-loading';
 import { StoreState } from 'modules';
 import { SudokuState, actionCreators, SudokuActionTypes, UpdateBoardPayload } from 'modules/sudoku';
 import { Difficulty, Board } from 'services/sudoku.service';
@@ -96,6 +97,9 @@ class SudokuContainer extends React.Component<SudokuContainerProps, SudokuContai
         <Gap top="1.5rem" />
         <StatWrapper>
           <Stat title="남은 셀 갯수" value={`${sudoku.status === 'unsolved' ? getEmptyCellsCount(sudoku.board) : '-'}`} suffix=" / 81" />
+          {
+            sudoku.loading && <Loading type="bars" color="#000" />
+          }
           <Stat title="실수 허용 횟수" value={`${sudoku.status === 'unsolved' ? 3 - sudoku.failCount : '-'}`} suffix=" / 3" />
         </StatWrapper>
         <Gap top="1.5rem" />

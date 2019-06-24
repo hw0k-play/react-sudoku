@@ -7,6 +7,8 @@ export const GET_BOARD = 'sudoku/GET_BOARD';
 export const SET_BOARD = 'sudoku/SET_BOARD';
 export const UPDATE_BOARD = 'sudoku/UPDATE_BOARD';
 
+export const SAGA__GET_BOARD_LOADING = 'sudoku/saga/GET_BOARD_LOADING';
+export const SAGA__GET_BOARD_SUCCESS = 'sudoku/saga/GET_BOARD_SUCCESS';
 export const SAGA__GET_BOARD_FAILURE = 'sudoku/saga/GET_BOARD_FAILURE';
 
 export type UpdateBoardPayload = {
@@ -43,6 +45,14 @@ interface UpdateBoardAction {
   payload: UpdateBoardPayload;
 }
 
+interface SagaGetBoardLoadingAction {
+  type: typeof SAGA__GET_BOARD_LOADING;
+}
+
+interface SagaGetBoardSuccessAction {
+  type: typeof SAGA__GET_BOARD_SUCCESS;
+}
+
 interface SagaGetBoardFailureAction {
   type: typeof SAGA__GET_BOARD_FAILURE;
   error: Error;
@@ -54,6 +64,8 @@ export type SudokuActionTypes =
   GetBoardAction |
   SetBoardAction |
   UpdateBoardAction |
+  SagaGetBoardLoadingAction |
+  SagaGetBoardSuccessAction |
   SagaGetBoardFailureAction;
 
 const start = (): SudokuActionTypes => {
@@ -89,6 +101,18 @@ const updateBoard = (payload: UpdateBoardPayload): SudokuActionTypes => {
   };
 };
 
+const sagaGetBoardLoading = (): SudokuActionTypes => {
+  return {
+    type: SAGA__GET_BOARD_LOADING
+  };
+};
+
+const sagaGetBoardSuccess = (): SudokuActionTypes => {
+  return {
+    type: SAGA__GET_BOARD_SUCCESS
+  };
+};
+
 const sagaGetBoardFailure = (error: Error): SudokuActionTypes => {
   return {
     type: SAGA__GET_BOARD_FAILURE,
@@ -96,7 +120,7 @@ const sagaGetBoardFailure = (error: Error): SudokuActionTypes => {
   };
 };
 
-export const actionCreators = { start, end, getBoard, setBoard, updateBoard, sagaGetBoardFailure };
+export const actionCreators = { start, end, getBoard, setBoard, updateBoard, sagaGetBoardLoading, sagaGetBoardSuccess, sagaGetBoardFailure };
 
 const getEmptyBoard: (() => Board) = () => new Array(9).fill(0).map(() => new Array(9).fill(0)) as Board;
 
@@ -106,7 +130,8 @@ export interface SudokuState {
   origin: Board,
   solution: Board,
   failCount: number,
-  error?: Error
+  error?: Error,
+  loading: boolean
 }
 
 const initialState: SudokuState = {
@@ -114,7 +139,8 @@ const initialState: SudokuState = {
   board: getEmptyBoard(),
   origin: getEmptyBoard(),
   solution: getEmptyBoard(),
-  failCount: 0
+  failCount: 0,
+  loading: false
 };
 
 export function sudokuReducer(state = initialState, action: SudokuActionTypes) {
@@ -169,7 +195,16 @@ export function sudokuReducer(state = initialState, action: SudokuActionTypes) {
         }
         break;
 
+      case SAGA__GET_BOARD_LOADING:
+        draft.loading = true;
+        break;
+
+      case SAGA__GET_BOARD_SUCCESS:
+        draft.loading = false;
+        break;
+
       case SAGA__GET_BOARD_FAILURE:
+        draft.loading = false;
         draft.error = action.error;
         break;
 
