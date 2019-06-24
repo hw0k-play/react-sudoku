@@ -17,6 +17,8 @@ type SudokuContainerState = {
   y: number;
 };
 
+const isPressedNumber = (pressed: String) => pressed.match(/^[1-9]*$/) ? true : false;
+
 class SudokuContainer extends React.Component<SudokuContainerProps, SudokuContainerState> {
   state = {
     x: 0,
@@ -36,7 +38,7 @@ class SudokuContainer extends React.Component<SudokuContainerProps, SudokuContai
   };
 
   handleKeyPress = (event: KeyboardEvent) => {
-    if (!event.key.match(/^[0-9]*$/)) return;
+    if (!isPressedNumber(event.key)) return;
     this.props.updateBoard({x: this.state.x, y: this.state.y, value: parseInt(event.key)});
   };
 

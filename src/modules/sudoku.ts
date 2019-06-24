@@ -103,43 +103,72 @@ const getEmptyBoard: (() => Board) = () => new Array(9).fill(0).map(() => new Ar
 export interface SudokuState {
   status: Status,
   board: Board,
+  origin: Board,
   solution: Board,
+  failCount: number,
   error?: Error
 }
 
 const initialState: SudokuState = {
-  status: 'unsolved',
+  status: 'solved',
   board: getEmptyBoard(),
-  solution: getEmptyBoard()
+  origin: getEmptyBoard(),
+  solution: getEmptyBoard(),
+  failCount: 0
 };
 
 export function sudokuReducer(state = initialState, action: SudokuActionTypes) {
   return produce(state, draft => {
     switch (action.type) {
       case START:
-        draft = {
-          status: 'unsolved',
-          board: getEmptyBoard(),
-          solution: getEmptyBoard()
-        };
+        draft.status = 'unsolved';
+        draft.failCount = 0;
         break;
+
       case END:
+        alert('클리어하지 못했습니다.');
+        draft.status = 'solved';
+
         break;
+
       case SET_BOARD:
         const { board, solution } = action.payload;
         draft.board = board;
+        draft.origin = board;
         draft.solution = solution;
         break;
+        
       case UPDATE_BOARD:
+        if (state.status === 'solved') {
+          break;
+        }
         const { x, y, value } = action.payload;
+
+        if (state.origin[x][y] !== 0) {
+          break;
+        }
+
+        if (state.board[x][y] !== 0) {
+          break;
+        }
+
+        if (state.solution[x][y] !== value) {
+          alert('오답입니다!');
+          draft.failCount += 1;
+          break;
+        }
+
         draft.board[x][y] = value;
+
         if (draft.board.toString() === draft.solution.toString()) {
           draft.status = 'solved';
         }
         break;
+
       case SAGA__GET_BOARD_FAILURE:
         draft.error = action.error;
         break;
+
       default:
         break;
     }
