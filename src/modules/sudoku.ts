@@ -128,7 +128,10 @@ export function sudokuReducer(state = initialState, action: SudokuActionTypes) {
       case END:
         alert('클리어하지 못했습니다.');
         draft.status = 'solved';
-
+        draft.board = getEmptyBoard();
+        draft.origin = getEmptyBoard();
+        draft.solution = getEmptyBoard();
+        draft.failCount = 0;
         break;
 
       case SET_BOARD:
@@ -162,6 +165,7 @@ export function sudokuReducer(state = initialState, action: SudokuActionTypes) {
 
         if (draft.board.toString() === draft.solution.toString()) {
           draft.status = 'solved';
+          alert('클리어 성공!');
         }
         break;
 
