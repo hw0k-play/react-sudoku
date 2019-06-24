@@ -1,6 +1,8 @@
+<p align="center">
+  <img width="460" height="300" src="./sc.png">
+</p>
+
 # 리액트로 만드는 스도쿠
-
-
 
 ## 개요
 
