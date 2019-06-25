@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-type GapperProps = {
+type GapProps = {
   left?: string;
   right?: string;
   top?: string;
   bottom?: string;
 };
 
-const Gapper = styled.div`
-  ${(props: GapperProps) => props.left && `margin-left: ${props.left}`}
-  ${(props: GapperProps) => props.right && `margin-right: ${props.right}`}
-  ${(props: GapperProps) => props.top && `margin-top: ${props.top}`}
-  ${(props: GapperProps) => props.bottom && `margin-bottom: ${props.bottom}`}
+const Gap = styled.div`
+  ${(props: GapProps) => props.left && `margin-left: ${props.left}`}
+  ${(props: GapProps) => props.right && `margin-right: ${props.right}`}
+  ${(props: GapProps) => props.top && `margin-top: ${props.top}`}
+  ${(props: GapProps) => props.bottom && `margin-bottom: ${props.bottom}`}
 `;
 
-export default Gapper;
+export default Gap;
