@@ -62,3 +62,4 @@
 5. [스도쿠 서비스를 이용하는 사가 만들기](https://medium.com/@hw0knam/9a117597396e?source=friends_link&sk=88393ae8718b059565073c80ff4fde1c)
 6. [컴포넌트 만들기](https://medium.com/@hw0knam/1fd7a4f46ee7?source=friends_link&sk=22b6df799935e00704791928571c7266)
 7. [게임 로직 담기 & 배포하기](https://medium.com/@hw0knam/ab2b16041b91?sk=a7a809ade7cf207499aff40d1b0343c7)
+8. [중간 회고](https://velog.io/@hw0knam/%EB%A6%AC%EC%95%A1%ED%8A%B8%EB%A1%9C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EC%8A%A4%EB%8F%84%EC%BF%A0-8.-%EC%A4%91%EA%B0%84-%ED%9A%8C%EA%B3%A0-18jxb8l7ds)
