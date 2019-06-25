@@ -1,4 +1,5 @@
-import { createStore, Store, compose, applyMiddleware } from 'redux';
+import { createStore, Store, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import modules, { StoreState } from 'modules';
 
 import createSagaMiddleware from 'redux-saga';
@@ -6,14 +7,12 @@ import entrySaga from 'sagas';
 
 import logger from 'redux-logger';
 
-const composeEnhancers = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
 const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(): Store<StoreState> {
   const store = createStore(
     modules,
-    composeEnhancers(
+    composeWithDevTools(
       applyMiddleware(sagaMiddleware, logger)
     )
   );
